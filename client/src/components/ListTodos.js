@@ -17,12 +17,12 @@ class ListTodos extends Component {
         .catch(error => console.error(error));
     }
 
-    handleDelete = async (todo) => {
+    handleDelete = async (id) => {
         try {
-            const deleteTodo = await fetch(`http://localhost:5000/todos/${todo}`, {
+            const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
                 method: "DELETE",
-            })
-            this.setState({todos: this.state.todos.filter(item => item.todo_id !== todo)});
+
+            }).then(this.setState({todos: this.state.todos.filter(todo => todo.todo_id !== id)}));
             // console.log(this.state.todos);
         }
         catch (err) {
@@ -40,7 +40,7 @@ class ListTodos extends Component {
                     {todos.map(todo => (
                         <tr key={todo.todo_id}>
                             <td key={todo.id}>{todo.description} </td>
-                            <td><EditTodo /></td>
+                            <td><EditTodo todo={todo}/></td>
                             <td><button type="submit" className="btn btn-danger" onClick={() => this.handleDelete(todo.todo_id)}>Delete</button></td>
                         </tr>
                     ))}
