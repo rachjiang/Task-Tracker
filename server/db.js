@@ -1,10 +1,12 @@
 // connect to database with pg library
-
 const Pool = require("pg").Pool;
+const dotenv = require("dotenv");
+// set up environment variables
+dotenv.config();
 
 const db = new Pool({
-    user: "rachel",
-    password: "rachel123",
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
     host: "localhost",
     port: 5432,
     database: "todo-list"
