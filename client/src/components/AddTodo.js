@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 
-class InputTodo extends Component {
+class AddTodo extends Component {
     constructor() {
         super();
         this.state = {
@@ -21,4 +21,4 @@ class InputTodo extends Component {
     }
 }
 
-export default InputTodo;
+export default AddTodo;
