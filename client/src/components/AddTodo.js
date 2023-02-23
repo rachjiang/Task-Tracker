@@ -33,9 +33,9 @@ class AddTodo extends Component {
     render() {
         return (
             <Fragment>
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" value={this.state.description} onChange={this.handleInputChange} />
-                    <button>Add Task</button>
+                <form className="m-5 text-center d-flex" onSubmit={this.handleSubmit}>
+                    <input type="text" className="form-control" placeholder="Enter a new task here to display it in the to-do list below" value={this.state.description} onChange={this.handleInputChange} />
+                    <button type="submit" className="btn btn-success">Add To-do</button>
                 </form>
             </Fragment>
         )
