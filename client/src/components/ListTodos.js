@@ -1,9 +1,13 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 class ListTodos extends Component {
-    state = {
-        todos: [],
-    };
+    constructor() {
+        super()
+        this.state = {
+            todos: [],
+        };
+        this.handleDelete = this.handleDelete.bind(this);
+    }
 
     componentDidMount() {
         fetch("http://localhost:5000/todos")
@@ -12,18 +16,38 @@ class ListTodos extends Component {
         .catch(error => console.error(error));
     }
 
+    handleDelete = async (todo) => {
+        try {
+            const deleteTodo = await fetch(`http://localhost:5000/todos/${todo}`, {
+                method: "DELETE",
+            })
+            console.log(deleteTodo);
+        }
+        catch (err) {
+            console.error(err);
+        }
+    }
+
+
+
     render() {
         const { todos } = this.state;
 
         return (
-            <div>
-                <h1>Tasks</h1>
-                <ol>
+            <Fragment>
+                <h1 className="text-center">Tasks</h1>
+                <table className="table mt-5 text-center">
+                    <tbody>
                     {todos.map(todo => (
-                        <li key={todo.id}>{todo.description}</li>
+                        <tr key={todo.todo_id}>
+                            <td key={todo.id}>{todo.description} </td>
+                            <td><button type="submit" className="btn btn-info">Edit</button></td>
+                            <td><button type="submit" className="btn btn-danger" onClick={() => this.handleDelete(todo.todo_id)}>Delete</button></td>
+                        </tr>
                     ))}
-                </ol>
-            </div>
+                    </tbody>
+                </table>
+            </Fragment>
         )
     }
 }
