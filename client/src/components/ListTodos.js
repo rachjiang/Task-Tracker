@@ -21,7 +21,7 @@ class ListTodos extends Component {
             const deleteTodo = await fetch(`http://localhost:5000/todos/${todo}`, {
                 method: "DELETE",
             })
-            console.log(deleteTodo);
+            this.setState({todos: this.state.todos.filter(task => task.todo_id !== todo)});
         }
         catch (err) {
             console.error(err);
