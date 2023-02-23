@@ -22,13 +22,12 @@ class AddTodo extends Component {
                 headers: { "Content-Type": "application/json" }, // tells the server to parse data in JSON format
                 body: JSON.stringify({ description: this.state.description })
             })
-            window.location = "/"; // refreshes the page so component can re-render and list new to-do
+            window.location = "/";
         }
         catch (err) {
             console.error(err);
         }
     }
-
 
     render() {
         return (

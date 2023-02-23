@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import EditTodo from "./EditTodo"
 
 class ListTodos extends Component {
     constructor() {
@@ -21,18 +22,16 @@ class ListTodos extends Component {
             const deleteTodo = await fetch(`http://localhost:5000/todos/${todo}`, {
                 method: "DELETE",
             })
-            this.setState({todos: this.state.todos.filter(task => task.todo_id !== todo)});
+            this.setState({todos: this.state.todos.filter(item => item.todo_id !== todo)});
+            // console.log(this.state.todos);
         }
         catch (err) {
             console.error(err);
         }
     }
 
-
-
     render() {
         const { todos } = this.state;
-
         return (
             <Fragment>
                 <h1 className="text-center">Tasks</h1>
@@ -41,7 +40,7 @@ class ListTodos extends Component {
                     {todos.map(todo => (
                         <tr key={todo.todo_id}>
                             <td key={todo.id}>{todo.description} </td>
-                            <td><button type="submit" className="btn btn-info">Edit</button></td>
+                            <td><EditTodo /></td>
                             <td><button type="submit" className="btn btn-danger" onClick={() => this.handleDelete(todo.todo_id)}>Delete</button></td>
                         </tr>
                     ))}
