@@ -1,26 +1,19 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
-class AddTodo extends Component {
-    constructor() {
-        super();
-        this.state = {
-            description: '',
-        };
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+function AddTodo () {
+    const [description, setDescription] = useState("")
 
-    handleInputChange = (event) => {
-        this.setState({ description: event.target.value });
+    function handleInputChange (event) {
+        setDescription(event.target.value);
     };
 
-    handleSubmit = async (event) => {
+    async function handleSubmit (event) {
         event.preventDefault();
         try {
             const response = await fetch("http://localhost:5000/todos", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" }, // tells the server to parse data in JSON format
-                body: JSON.stringify({ description: this.state.description })
+                body: JSON.stringify({ description })
             })
             window.location = "/";
         }
@@ -29,16 +22,16 @@ class AddTodo extends Component {
         }
     }
 
-    render() {
-        return (
-            <Fragment>
-                <form className="m-5 text-center d-flex" onSubmit={this.handleSubmit}>
-                    <input type="text" className="form-control" placeholder="Enter a new task here to display it in the to-do list below" value={this.state.description} onChange={this.handleInputChange} />
-                    <button type="submit" className="btn btn-success">Add To-do</button>
-                </form>
-            </Fragment>
-        )
-    }
+
+    return (
+        <Fragment>
+            <form className="m-5 text-center d-flex" onSubmit={handleSubmit}>
+                <input type="text" className="form-control" placeholder="Enter a new task here to display it in the to-do list below" value={description} onChange={handleInputChange} />
+                <button type="submit" className="btn btn-success">Add To-do</button>
+            </form>
+        </Fragment>
+    )
+
 }
 
 export default AddTodo;
