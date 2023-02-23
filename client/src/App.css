@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+  color: black;
+  
+}
+
+.container {
+  max-width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+  padding: 5rem;
+  margin: 10rem;
+  background-color: rgb(255, 251, 173);
+}
