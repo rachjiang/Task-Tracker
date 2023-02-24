@@ -1,26 +1,21 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
-class EditTodo extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            description: this.props.todo.description
-        };
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+function EditTodo (props) {
+    const [description, setDescription] = useState(props.todo.description)
+    const [todo, setTodos] = useState(props.todo)
 
-    handleInputChange = (event) => {
-        this.setState({ description: event.target.value });
+    function handleDescriptionChange (event) {
+        setDescription(event.target.value);
     };
 
-    handleSubmit = async (id, event) => {
+    async function handleUpdates (id, event) {
         event.preventDefault();
         try {
+            const body = { description }; // new description from event input changes, set in line 8
             const response = await fetch(`http://localhost:5000/todos/${id}`, {
                 method: "PUT",
-                headers: { "Content-Type": "application/json" }, // tells the server to parse data in JSON format
-                body: JSON.stringify({ description: this.state.description })
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body) 
             })
             window.location = "/";
         }
@@ -28,11 +23,6 @@ class EditTodo extends Component {
             console.error(err);
         }
     }
-
-
-    render() {
-        const { todo } = this.props;
-        const { description } = this.state;
 
         return (
             <Fragment>
@@ -50,10 +40,10 @@ class EditTodo extends Component {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <input type="text" className="form-control" value={description} onChange={this.handleInputChange}/>
+                        <input type="text" className="form-control" value={description} onChange={handleDescriptionChange}/>
                     </div>
                     <div className="modal-footer">
-                        <button type="submit" className="btn btn-primary" onClick={(event) => this.handleSubmit(todo.todo_id, event)}>Save changes</button>
+                        <button type="submit" className="btn btn-primary" onClick={(event) => handleUpdates(todo.todo_id, event)}>Save changes</button>
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                     </div>
@@ -61,7 +51,6 @@ class EditTodo extends Component {
             </div>
         </Fragment> 
         )
-    }
 }
 
 export default EditTodo;
