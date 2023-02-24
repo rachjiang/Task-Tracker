@@ -9,7 +9,7 @@ function SingleTodo() {
   // fetch a single todo by id
   async function getSingleTodo (id) {
     try {
-        const response = await fetch(`http://localhost:3000/todos/${id}`);
+        const response = await fetch(`http://localhost:5000/todos/${id}`);
         const todo = await response.json();
         setTodo(todo);
         console.log(response)
