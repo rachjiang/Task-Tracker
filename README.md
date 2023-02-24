@@ -1,8 +1,8 @@
-Welcome to Task Tracker!
+# Welcome to Task Tracker!
 
 A web-application that helps you organize tasks by allowing you to create, read, update and delete them.
 
-# Tech stack: PostgreSQL, Express, Node, React
+## Tech stack: PostgreSQL, Express, Node, React
 
 After forking and entering root directory, please follow these instructions to run the application:
 
