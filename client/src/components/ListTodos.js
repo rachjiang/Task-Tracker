@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect,useState } from "react";
+import { Link } from 'react-router-dom';
 import EditTodo from "./EditTodo"
+import SingleTodo from "./SingleTodo";
 
 function ListTodos () {
     const [todos, setTodos] = useState([]);
@@ -48,7 +50,7 @@ function ListTodos () {
                     <tbody>
                     {todos.map(todo => (
                         <tr key={todo.todo_id}>
-                            <td key={todo.id}>{todo.description} </td>
+                            <td><Link to={`/todos/${todo.todo_id}`}>{todo.description}</Link></td>
                             <td><EditTodo todo={todo}/></td>
                             <td><button type="submit" className="btn btn-danger" onClick={() => handleDelete(todo.todo_id)}>Delete</button></td>
                         </tr>
