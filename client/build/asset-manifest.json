@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4464005b.css",
+    "main.js": "/static/js/main.8eb98041.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/lou-levit-0lHIMPhRtN8-unsplash.jpg": "/static/media/lou-levit-0lHIMPhRtN8-unsplash.b1bbe8522c8301b4ef63.jpg",
+    "index.html": "/index.html",
+    "main.4464005b.css.map": "/static/css/main.4464005b.css.map",
+    "main.8eb98041.js.map": "/static/js/main.8eb98041.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4464005b.css",
+    "static/js/main.8eb98041.js"
+  ]
+}
