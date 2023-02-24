@@ -15,6 +15,7 @@ function AddTodo () {
             return;
       }
         try {
+            // eslint-disable-next-line no-unused-vars
             const response = await fetch("http://localhost:5000/todos", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" }, // tells the server to parse data in JSON format

@@ -1,7 +1,12 @@
+/* eslint-disable no-unused-vars */
 const express = require("express");
+const path = require("path");
 const app = express();
 const cors = require("cors");
 const db = require("./db"); // allows queries with postgres
+
+// serve static files
+app.use(express.static(path.join(__dirname + "/public")))
 
 // middleware to grab data from the client
 app.use(cors());
@@ -73,6 +78,6 @@ app.delete("/todos/:id", async(req, res) => {
     }
 })
 
-app.listen(5000, () => {
-    console.log("server has started on port 5000");
+app.listen(3000, () => {
+    console.log("server has started on port 3000");
 });
