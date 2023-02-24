@@ -9,6 +9,11 @@ function AddTodo () {
 
     async function handleSubmit (event) {
         event.preventDefault();
+        // Check if description is blank
+        if (description.trim() === '') {
+            alert('Please enter a task before adding!');
+            return;
+      }
         try {
             const response = await fetch("http://localhost:5000/todos", {
                 method: "POST",
@@ -27,7 +32,7 @@ function AddTodo () {
         <Fragment>
             <div className="container pb-0">
                 <form className="m-5 text-center d-flex" onSubmit={handleSubmit}>
-                    <input type="text" className="form-control" placeholder="Enter a new task here to display it in the to-do list below" value={description} onChange={handleInputChange} />
+                    <input type="text" className="form-control" placeholder="Enter a new task here to display it in the list below" value={description} onChange={handleInputChange} />
                     <button type="submit" className="btn btn-success">Add Task</button>
                 </form>
             </div>
