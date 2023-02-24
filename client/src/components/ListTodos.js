@@ -18,6 +18,7 @@ function ListTodos () {
 
     async function handleDelete (id) {
         try {
+            // eslint-disable-next-line no-unused-vars
             const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
                 method: "DELETE",
 
