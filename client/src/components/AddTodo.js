@@ -25,10 +25,12 @@ function AddTodo () {
 
     return (
         <Fragment>
-            <form className="m-5 text-center d-flex" onSubmit={handleSubmit}>
-                <input type="text" className="form-control" placeholder="Enter a new task here to display it in the to-do list below" value={description} onChange={handleInputChange} />
-                <button type="submit" className="btn btn-success">Add To-do</button>
-            </form>
+            <div className="container pb-0">
+                <form className="m-5 text-center d-flex" onSubmit={handleSubmit}>
+                    <input type="text" className="form-control" placeholder="Enter a new task here to display it in the to-do list below" value={description} onChange={handleInputChange} />
+                    <button type="submit" className="btn btn-success">Add Task</button>
+                </form>
+            </div>
         </Fragment>
     )
 

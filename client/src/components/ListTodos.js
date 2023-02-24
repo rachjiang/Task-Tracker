@@ -36,18 +36,26 @@ function ListTodos () {
 
     return (
         <Fragment>
-            <h1 className="text-center">Tasks</h1>
-            <table className="table mt-5 text-center">
-                <tbody>
-                {todos.map(todo => (
-                    <tr key={todo.todo_id}>
-                        <td key={todo.id}>{todo.description} </td>
-                        <td><EditTodo todo={todo}/></td>
-                        <td><button type="submit" className="btn btn-danger" onClick={() => handleDelete(todo.todo_id)}>Delete</button></td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>
+            <div className="container">
+                <table className="table table-light table-striped table-bordered border-dark text-center">
+                    <thead>
+                        <tr className="h3 font-weight-bold">
+                            <th>Tasks</th>
+                            <th>Update</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {todos.map(todo => (
+                        <tr key={todo.todo_id}>
+                            <td key={todo.id}>{todo.description} </td>
+                            <td><EditTodo todo={todo}/></td>
+                            <td><button type="submit" className="btn btn-danger" onClick={() => handleDelete(todo.todo_id)}>Delete</button></td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
         </Fragment>
     )
 }

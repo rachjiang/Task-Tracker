@@ -26,7 +26,7 @@ function EditTodo (props) {
 
         return (
             <Fragment>
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target={`#id${todo.todo_id}`}>
+            <button type="button" className="btn btn-info" data-toggle="modal" data-target={`#id${todo.todo_id}`}>
             Edit
             </button>
     
