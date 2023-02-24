@@ -1,13 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&family=Titan+One&display=swap');
+
 .App {
   text-align: center;
-  color: black;
-  
+  font-family: 'Titan One', cursive;
+  color: rgb(15, 96, 112);
+  background-image: url('../public/lou-levit-0lHIMPhRtN8-unsplash.jpg');
+  background-repeat: no-repeat, repeat;
+  background-position: cover;
+  background-size: 100%;
 }
 
 .container {
   max-width: 100%;
-  font-family: 'Montserrat', sans-serif;
-  text-align: left;
-  padding: 5rem;
-  background-color: rgb(255, 249, 198);
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+  color:rgb(2, 63, 116);
+  padding-top: 5rem;
+  padding-bottom: 15rem;
+  padding-inline: 15rem;
 }
