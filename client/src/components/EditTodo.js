@@ -14,7 +14,7 @@ function EditTodo (props) {
         event.preventDefault();
         try {
             const body = { description }; // new description from event input changes, set in line 8
-            const response = await fetch(`http://localhost:5000/todos/${id}`, {
+            const response = await fetch(`http://localhost:3000/todos/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body) 
