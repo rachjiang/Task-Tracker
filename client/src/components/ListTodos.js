@@ -7,7 +7,7 @@ function ListTodos () {
 
     async function getAllTodos () {
         try {
-            const response = await fetch("http://localhost:5000/todos")
+            const response = await fetch("/todos")
             const todos = await response.json();
             setTodos(todos); 
         }
@@ -18,7 +18,8 @@ function ListTodos () {
 
     async function handleDelete (id) {
         try {
-            const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
+            // eslint-disable-next-line no-unused-vars
+            const deleteTodo = await fetch(`/todos/${id}`, {
                 method: "DELETE",
 
             })
@@ -29,7 +30,7 @@ function ListTodos () {
         }
     }
 
-    function handleCheckboxChange (id, event) {
+    function handleCheckboxChange (id) {
         setTodos(todos.map(todo => {
             if (todo.todo_id === id) {
                 todo.completed = !todo.completed;
@@ -59,7 +60,7 @@ function ListTodos () {
                     <tbody>
                     {todos.map(todo => (
                         <tr key={todo.todo_id}>
-                            <td><input className="mx-5" type="checkbox" checked={todo.completed} onChange={(event) => handleCheckboxChange(todo.todo_id, event)} /></td>
+                            <td><input className="mx-5" type="checkbox" checked={todo.completed} onChange={() => handleCheckboxChange(todo.todo_id)} /></td>
                             <td><Link to={`/todos/${todo.todo_id}`}>{todo.description}</Link></td>
                             <td><EditTodo todo={todo}/></td>
                             <td><button type="submit" className="btn btn-danger" onClick={() => handleDelete(todo.todo_id)}>Delete</button></td>
