@@ -7,8 +7,6 @@ const path = require("path");
 
 const PORT = process.env.PORT || 5000;
 
-// process.env.NODE_ENV => production or undefined 
-
 // middleware to grab data from the client
 app.use(cors());
 app.use(express.json()) // access to req.body to use json data in api calls
