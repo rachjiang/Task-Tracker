@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const db = require("./db"); // allows queries with postgres
-const path = require("path");
 
 const PORT = process.env.PORT || 5000;
  
@@ -11,26 +10,6 @@ const PORT = process.env.PORT || 5000;
 app.use(cors()); 
 app.use(express.json()) // access to req.body to use json data in api calls
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "client/build")));
-  }
-  console.log(__dirname);
-  console.log((path.join(__dirname, "client/build")));
-
-// Adding a to-do
-app.post("/todos", async(req, res) => {
-    try {
-        const { description } = req.body; // destructuring description from request body' JSON data
-        const newTodo = await db.query(
-            // $# acts as a variable placeholder to specify columns to query from the table
-            // RETURNING * returns the updates we've made into the "rows" property of the JSON object
-            "INSERT INTO todo (description) VALUES($1) RETURNING *",[description]);
-        res.json(newTodo.rows);
-    }
-    catch (err) {
-        console.log(err.message);
-    }
-})
 
 // Getting multiple to-do's
 app.get("/todos", async(req, res) => {
@@ -52,6 +31,21 @@ app.get("/todos/:id", async(req, res) => {
         res.json(todo.rows[0]); // [0] since we're only querying one todo
     }
     catch(err) {
+        console.log(err.message);
+    }
+})
+
+// Adding a to-do
+app.post("/todos", async(req, res) => {
+    try {
+        const { description } = req.body; // destructuring description from request body' JSON data
+        const newTodo = await db.query(
+            // $# acts as a variable placeholder to specify columns to query from the table
+            // RETURNING * returns the updates we've made into the "rows" property of the JSON object
+            "INSERT INTO todo (description) VALUES($1) RETURNING *",[description]);
+        res.json(newTodo.rows);
+    }
+    catch (err) {
         console.log(err.message);
     }
 })
