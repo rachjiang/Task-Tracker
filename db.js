@@ -13,11 +13,11 @@ const devConfig = {
 };
 
 // eslint-disable-next-line no-unused-vars
-const proConfig = {
-    connectionString: process.env.DATABASE_URL // value comes from heroku pg URL value for db named DATABASE_URL
-}
+const proConfig = process.env.DATABASE_URL // value comes from heroku pg URL value for db named DATABASE_URL
 
-const db = new Pool(process.env.NODE_ENV === "production" ? proConfig : devConfig);
 // if in production mode on heroku, we need to pass in the heroku DATABASE_URL. if in dev mode, run local db
+const db = new Pool({
+    connectionString: process.env.NODE_ENV === "production" ? proConfig : devConfig
+    });
 
 module.exports = db;

@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json()) // access to req.body to use json data in api calls
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "client/build")))
+    app.use(express.static(path.join(__dirname, "client/build")));
 }
 
 
