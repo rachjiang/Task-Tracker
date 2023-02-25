@@ -10,7 +10,7 @@ After forking and entering root directory, please follow these instructions to r
 
 # `npm install`
 
-# `nodemon index`
+# `node index`
 
 Open another tab in the terminal and start from the root directory:
 
