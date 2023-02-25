@@ -6,8 +6,6 @@ A web-application that helps you organize tasks by allowing you to create, read,
 
 After forking and entering root directory, please follow these instructions to run the application:
 
-### `cd server`
-
 ### `npm install`
 
 ### `node index`
