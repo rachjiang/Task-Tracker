@@ -15,7 +15,7 @@ function AddTodo () {
             return;
       }
         try {
-            const response = await fetch("https://task-tracker-rj.herokuapp.com/todos", {
+            const response = await fetch("/todos", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" }, // tells the server to parse data in JSON format
                 body: JSON.stringify({ description }) // convert body object into a string to send to request body
