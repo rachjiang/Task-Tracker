@@ -5,7 +5,7 @@ const cors = require("cors");
 const db = require("./db"); // allows queries with postgres
 const path = require("path");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // middleware to grab data from the client
 app.use(cors());
