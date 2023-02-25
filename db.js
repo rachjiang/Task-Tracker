@@ -6,7 +6,7 @@ dotenv.config();
 
 let db;
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
 // if in production mode on heroku, we need to pass in the heroku DATABASE_URL. if in dev mode, run local db
   db = new Pool({
     // value comes from heroku pg URL value for db named DATABASE_URL
@@ -23,9 +23,5 @@ if (process.env.NODE_ENV === 'production') {
     database: process.env.PG_DATABASE
   });
 }
-
-
-
-
 
 module.exports = db;
