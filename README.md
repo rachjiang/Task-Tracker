@@ -16,11 +16,11 @@ After setting up Postgres and entering root directory, please follow these instr
 Now that the database is set up locally, we need to add some environment variables for the app to connect to it:
 1. Create a .env file in the root directory.
 2. Copy and paste this into the .env file:
-`PG_USER = <yourusername>`
-`PG_PASSWORD = <yourpassword>`
-`PG_HOST = localhost`
-`PG_PORT = 5432`
-`PG_DATABASE = todoapp`
+- `PG_USER = <yourusername>`
+- `PG_PASSWORD = <yourpassword>`
+- `PG_HOST = localhost`
+- `PG_PORT = 5432`
+- `PG_DATABASE = todoapp`
 
 The set up is done! Now to run the app, make sure you're still in the root directory:
 
