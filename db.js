@@ -1,5 +1,5 @@
 // connect to database with pg library
-const Pool = require("pg").Pool;
+const Pool = require("pg/lib").Pool;
 const dotenv = require("dotenv");
 // set up environment variables
 dotenv.config();
