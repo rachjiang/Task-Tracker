@@ -7,7 +7,7 @@ function ListTodos () {
 
     async function getAllTodos () {
         try {
-            const response = await fetch("http://localhost:5000/todos")
+            const response = await fetch("/todos")
             const todos = await response.json();
             setTodos(todos); 
         }
@@ -19,7 +19,7 @@ function ListTodos () {
     async function handleDelete (id) {
         try {
             // eslint-disable-next-line no-unused-vars
-            const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
+            const deleteTodo = await fetch(`/todos/${id}`, {
                 method: "DELETE",
 
             })
