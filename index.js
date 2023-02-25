@@ -3,17 +3,24 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const db = require("./db"); // allows queries with postgres
-const path = require("path");
 
 const PORT = process.env.PORT || 5000;
-
+ 
 // middleware to grab data from the client
-app.use(cors());
+app.use(cors()); 
 app.use(express.json()) // access to req.body to use json data in api calls
 
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "client/build")))
-}
+
+// Getting multiple to-do's
+app.get("/todos", async(req, res) => {
+    try {
+        const allTodos = await db.query("SELECT * FROM todo");
+        res.json(allTodos.rows);
+    }
+    catch (err) {
+        console.log(err.message);
+    }
+})
 
 // Getting a single to-do
 app.get("/todos/:id", async(req, res) => {
@@ -24,17 +31,6 @@ app.get("/todos/:id", async(req, res) => {
         res.json(todo.rows[0]); // [0] since we're only querying one todo
     }
     catch(err) {
-        console.log(err.message);
-    }
-})
-
-// Getting multiple to-do's
-app.get("/todos", async(req, res) => {
-    try {
-        const allTodos = await db.query("SELECT * FROM todo");
-        res.json(allTodos.rows);
-    }
-    catch (err) {
         console.log(err.message);
     }
 })

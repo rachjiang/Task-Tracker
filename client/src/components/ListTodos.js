@@ -61,7 +61,7 @@ function ListTodos () {
                     {todos.map(todo => (
                         <tr key={todo.todo_id}>
                             <td><input className="mx-5" type="checkbox" checked={todo.completed} onChange={() => handleCheckboxChange(todo.todo_id)} /></td>
-                            <td><Link to={`/todos/${todo.todo_id}`}>{todo.description}</Link></td>
+                            <td><Link to={`todos/${todo.todo_id}`}>{todo.description}</Link></td>
                             <td><EditTodo todo={todo}/></td>
                             <td><button type="submit" className="btn btn-danger" onClick={() => handleDelete(todo.todo_id)}>Delete</button></td>
                         </tr>
