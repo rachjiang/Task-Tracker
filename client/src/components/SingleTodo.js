@@ -9,7 +9,7 @@ function SingleTodo() {
   // fetch a single todo by id
   async function getSingleTodo (id) {
     try {
-        const response = await fetch(`/todos/${id}`);
+        const response = await fetch(`https://task-tracker-rj.herokuapp.com/todos/${id}`);
         const todo = await response.json();
         setTodo(todo);
         console.log(response)

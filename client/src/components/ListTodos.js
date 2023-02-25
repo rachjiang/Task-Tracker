@@ -7,7 +7,7 @@ function ListTodos () {
 
     async function getAllTodos () {
         try {
-            const response = await fetch("/todos")
+            const response = await fetch("https://task-tracker-rj.herokuapp.com/todos")
             const todos = await response.json();
             setTodos(todos); 
         }
@@ -19,7 +19,7 @@ function ListTodos () {
     async function handleDelete (id) {
         try {
             // eslint-disable-next-line no-unused-vars
-            const deleteTodo = await fetch(`/todos/${id}`, {
+            const deleteTodo = await fetch(`https://task-tracker-rj.herokuapp.com/todos/${id}`, {
                 method: "DELETE",
 
             })
@@ -61,7 +61,7 @@ function ListTodos () {
                     {todos.map(todo => (
                         <tr key={todo.todo_id}>
                             <td><input className="mx-5" type="checkbox" checked={todo.completed} onChange={() => handleCheckboxChange(todo.todo_id)} /></td>
-                            <td><Link to={`/todos/${todo.todo_id}`}>{todo.description}</Link></td>
+                            <td><Link to={`https://task-tracker-rj.herokuapp.com/todos/${todo.todo_id}`}>{todo.description}</Link></td>
                             <td><EditTodo todo={todo}/></td>
                             <td><button type="submit" className="btn btn-danger" onClick={() => handleDelete(todo.todo_id)}>Delete</button></td>
                         </tr>
