@@ -16,7 +16,6 @@ function App() {
             <Route path="/" element={<ListTodos />} />
             <Route exact path="/todos/:id" element={<SingleTodo />} />
           </Routes>
-          <footer className="pb-5">© 2023 Made by Rachel Jiang</footer>
         </div>
       </Fragment>
     </Router>
