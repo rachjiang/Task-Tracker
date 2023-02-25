@@ -17,8 +17,21 @@ app.use(cors(corsOptions));
 app.use(express.json()) // access to req.body to use json data in api calls
 
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "client/build")))
-}
+    app.use(express.static(path.join(__dirname, "client/build")));
+  }
+  console.log(__dirname);
+  console.log((path.join(__dirname, "client/build")));
+
+// Getting multiple to-do's
+app.get("/todos", async(req, res) => {
+    try {
+        const allTodos = await db.query("SELECT * FROM todo");
+        res.json(allTodos.rows);
+    }
+    catch (err) {
+        console.log(err.message);
+    }
+})
 
 // Getting a single to-do
 app.get("/todos/:id", async(req, res) => {
@@ -29,17 +42,6 @@ app.get("/todos/:id", async(req, res) => {
         res.json(todo.rows[0]); // [0] since we're only querying one todo
     }
     catch(err) {
-        console.log(err.message);
-    }
-})
-
-// Getting multiple to-do's
-app.get("/todos", async(req, res) => {
-    try {
-        const allTodos = await db.query("SELECT * FROM todo");
-        res.json(allTodos.rows);
-    }
-    catch (err) {
         console.log(err.message);
     }
 })
@@ -83,6 +85,10 @@ app.delete("/todos/:id", async(req, res) => {
         console.log(err.message);
     }
 })
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
+});
 
 app.listen(PORT, () => {
     console.log(`server has started on port ${PORT}`);

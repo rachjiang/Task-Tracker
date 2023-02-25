@@ -6,6 +6,7 @@ dotenv.config();
 
 let db;
 
+// process.env.NODE_ENV returns production or undefined (heroku env variable)
 if (process.env.NODE_ENV === "production") {
 // if in production mode on heroku, we need to pass in the heroku DATABASE_URL. if in dev mode, run local db
   db = new Pool({
