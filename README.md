@@ -1,4 +1,4 @@
-Welcome to Task Tracker!
+# Welcome to Task Tracker!
 
 A web-application that helps you organize tasks by allowing you to create, read, update and delete them.
 
