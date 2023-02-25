@@ -1,13 +1,21 @@
+/* eslint-disable no-unused-vars */
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const db = require("./db"); // allows queries with postgres
+const path = require("path");
+
+const PORT = process.env.PORT || 5000;
 
 // middleware to grab data from the client
 app.use(cors());
 app.use(express.json()) // access to req.body to use json data in api calls
 
-// ROUTES //
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "client/build")))
+}
+
+
 
 // Getting a single to-do
 app.get("/todos/:id", async(req, res) => {
@@ -73,6 +81,6 @@ app.delete("/todos/:id", async(req, res) => {
     }
 })
 
-app.listen(5000, () => {
-    console.log("server has started on port 5000");
+app.listen(PORT, () => {
+    console.log(`server has started on port ${PORT}`);
 });

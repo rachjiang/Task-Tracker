@@ -8,12 +8,13 @@ function EditTodo (props) {
     function handleDescriptionChange (event) {
         setDescription(event.target.value);
     };
-
+    // proxy in package.json will apply http://localhost:5000 before request paths below in dev mode
+    // in production, proxy doesn't apply so the paths are correct in heroku domain
     async function handleUpdates (id, event) {
         event.preventDefault();
         try {
             const body = { description }; // new description from event input changes, set in line 8
-            const response = await fetch(`http://localhost:5000/todos/${id}`, {
+            const response = await fetch(`/todos/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body) 
