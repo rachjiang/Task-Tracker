@@ -9,7 +9,7 @@ Postgres Download: https://www.postgresql.org/download/
 
 After setting up Postgres and entering root directory, please follow these instructions to run the application:
 
-1. Open your terminal and log into Postgres with #### `psql -U <yourusername>`
+1. Open your terminal and log into Postgres with `psql -U <yourusername>`
 2. Open the database.sql file, then copy and paste `CREATE DATABASE todoapp;` into the terminal after you've logged into Postgres
 3. Run `\c todoapp' . You should now be connected to the database.
 4. Copy and paste the rest of the SQL commands and paste it into the terminal.
