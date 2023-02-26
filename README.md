@@ -7,15 +7,16 @@ A web-application that helps you organize tasks by allowing you to create, read,
 This app is not set up for production mode. To run, please have Postgres installed on your local machine.
 Postgres Download: https://www.postgresql.org/download/
 
-After setting up Postgres and entering root directory, please follow these instructions to run the application:
+After setting up Postgres, open your terminal and please follow these instructions to set up the application:
 
-1. Open your terminal and log into Postgres with `psql -U <yourusername>`
-2. Open the database.sql file, then copy and paste `CREATE DATABASE todoapp;` into the terminal after you've logged into Postgres
+1. Log into Postgres with `psql -U <yourusername>`
+2. Create a database with `CREATE DATABASE todoapp;` in the terminal
 3. Run `\c todoapp' . You should now be connected to the database.
-4. Copy and paste the rest of the SQL commands and paste it into the terminal.
-Now that the database is set up locally, we need to add some environment variables for the app to connect to it:
-1. Create a .env file in the root directory.
-2. Copy and paste this into the .env file:
+4. Create a table in terminal with `CREATE TABLE todo(todo_id SERIAL PRIMARY KEY, description VARCHAR(255), completed BOOLEAN DEFAULT false);`
+Now that the database is set up, we need to add some environment variables for the app to connect to it:
+5. `\q` to exit psql and `cd` into todo-app's root directory.
+6. Create a .env file in the root directory.
+7. Copy and paste these environment variables into the .env file and replace `<yourusername>` and `<yourpassword>` with your own Postgres username and password:
 - `PG_USER = <yourusername>`
 - `PG_PASSWORD = <yourpassword>`
 - `PG_HOST = localhost`
@@ -36,7 +37,7 @@ Open another tab in the terminal:
 
 ### `npm start`
 
-Runs the app in the development mode.
+The app is now running in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 
