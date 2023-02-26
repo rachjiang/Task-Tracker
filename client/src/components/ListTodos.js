@@ -7,7 +7,7 @@ function ListTodos () {
 
     async function getAllTodos () {
         try {
-            const response = await fetch("/todos")
+            const response = await fetch("http://localhost:5000/todos")
             const todos = await response.json();
             setTodos(todos); 
         }
@@ -19,7 +19,7 @@ function ListTodos () {
     async function handleDelete (id) {
         try {
             // eslint-disable-next-line no-unused-vars
-            const deleteTodo = await fetch(`/todos/${id}`, {
+            const deleteTodo = await fetch(`http://localhost:5000/todos/${id}`, {
                 method: "DELETE",
 
             })
@@ -30,13 +30,29 @@ function ListTodos () {
         }
     }
 
-    function handleCheckboxChange (id) {
-        setTodos(todos.map(todo => {
-            if (todo.todo_id === id) {
-                todo.completed = !todo.completed;
-            }
-            return todo;
-        }))
+    async function handleCheckboxChange (id) {
+        const updatedTodo = todos.find(todo => todo.todo_id === id);
+        updatedTodo.completed = !updatedTodo.completed;
+
+        try {
+            // eslint-disable-next-line no-unused-vars
+            const updateCompleted = await fetch(`http://localhost:5000/todos/${id}/completed`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify(updatedTodo)
+            });
+            setTodos(todos.map(todo => {
+                if (todo.todo_id === id) {
+                  return updatedTodo;
+                }
+                return todo;
+              }));
+        }
+        catch (err) {
+            console.error(err);
+        }
     }
 
     useEffect(() => {
