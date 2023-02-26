@@ -63,6 +63,19 @@ app.put("/todos/:id", async(req, res) => {
     }
 })
 
+// Updating the completed column of the to-do
+app.put("/todos/:id/completed", async(req, res) => {
+    try {
+        const { id } = req.params;
+        const { completed } = req.body;
+        const updateTodo = await db.query("UPDATE todo SET completed = $1 WHERE todo_id = $2", [completed, id]);
+        res.json(`Todo #${id} 'completed' status was updated!`);
+    }
+    catch (err) {
+        console.log(err.message);
+    }
+})
+
 // Deleting a to-do
 app.delete("/todos/:id", async(req, res) => {
     try {
